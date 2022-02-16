@@ -1,40 +1,60 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""
+Setup script for ottemplate
+==========================
 
-from setuptools import setup, find_packages
-# To use a consistent encoding
-from codecs import open
-from os import path
+This script allows to install ottemplate within the python environment.
 
-with open('ottemplate/__init__.py') as fid:
-    for line in fid:
-        if line.startswith('__version__'):
-            version = line.strip().split()[-1][1:-1]
-            break
+Usage
+-----
+::
+
+    python setup.py install
 
 """
-http://python-packaging.readthedocs.org/en/latest/minimal.html
-"""
+import re
+import os
+from distutils.core import setup
 
-# Get the long description from the README file
-here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+from setuptools import find_packages
+
+# Get the version from __init__.py
+path = os.path.join(os.path.dirname(__file__), 'ottemplate', '__init__.py')
+with open(path) as f:
+    version_file = f.read()
+
+version = re.search(r"^\s*__version__\s*=\s*['\"]([^'\"]+)['\"]",
+                    version_file, re.M)
+if version:
+    version = version.group(1)
+else:
+    raise RuntimeError("Unable to find version string.")
+
+# Long description
+with open("README.rst", "r") as fh:
+    long_description = fh.read()
 
 setup(
+
+    # library name
     name='ottemplate',
+
+    # code version
     version=version,
+
+    # list libraries to be imported
     packages=find_packages(),
-     extras_require = {
-         'joblib':  ["joblib>=0.9.3"],
-         'ipyparallel': ["ipyparallel>=5.0.1"],
-         'pathos': ["pathos>=0.2.0"]
-     },
-    author="First Name",
-    author_email="name@XXX.com",
-    description="OpenTURNS python template",
+
+    # Descriptions
+    description="ottemplate",
     long_description=long_description,
+
+    # List of dependancies
     setup_requires=['pytest-runner'],
+    #install_requires=['numpy>=1.13',
+    #                  'openturns'],
     tests_require=['pytest'],
-    zip_safe=False
+
+    # Enable to take into account MANIFEST.in
+    # include_package_data=True,
+    license="LGPL"
 )
