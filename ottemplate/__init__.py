@@ -13,7 +13,7 @@ if sys.platform.startswith('win'):
     # this ensures OT dll is loaded
     import openturns
 
-from .ottemplate import *
+from .ottemplate import ottemplate
 
 __version__ = '0.1'
 
