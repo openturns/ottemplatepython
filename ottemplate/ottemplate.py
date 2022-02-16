@@ -1,13 +1,19 @@
 import numpy as np
+import openturns as ot
 
 class MyClass(object):
     """
     Class test
+    Applying power on
 
     Parameters
     ----------
-    value : float
+    value : array-like or float
         The considered value.
+    
+    Notes
+    -----
+    Objects of type :py:class:`openturns.Sample` or :py:class:`openturns.Point` are also accepted.
     """
     def __init__(self, value):
         # set attribute
@@ -22,4 +28,4 @@ class MyClass(object):
         y : float
             The cube value.
         """
-        return np.pow(self.value, n)
+        return np.power(self.value, n)
