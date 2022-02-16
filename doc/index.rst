@@ -1,4 +1,4 @@
-OTTemplate documentation
+ottemplate documentation
 ========================
 
 User documentation

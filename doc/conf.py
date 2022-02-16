@@ -41,7 +41,7 @@ tags.add('nbsphinx')
 extensions.append('IPython.sphinxext.ipython_console_highlighting')
 
 autodoc_default_flags = ['members', 'inherited-members']
-intersphinx_mapping = {'python': ('http://openturns.github.io/openturns/1.10', 'openturns-objects.txt')}
+intersphinx_mapping = {'python': ('http://openturns.github.io/openturns/1.18', 'openturns-objects.inv')}
 autosummary_generate = True
 
 numpydoc_show_class_members = True
@@ -79,7 +79,7 @@ copyright = u'2005-2022 Airbus-EDF-IMACS-ONERA-Phimeca'
 # built documents.
 #
 # The short X.Y version.
-version = '0s.1'
+version = '0.1'
 # The full version, including alpha/beta/rc tags.
 release = '0.1'
 
@@ -143,7 +143,7 @@ html_sidebars = {'**': ['globaltoc.html', 'relations.html', 'sourcelink.html', '
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+#html_favicon = 'None'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
