@@ -125,7 +125,7 @@ todo_include_todos = True
 # -- Options for HTML output ----------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'classic'
+html_theme = 'openturns'
 if LooseVersion(sphinx.__version__) < LooseVersion('1.3'):
     html_theme = 'default'
 
@@ -134,9 +134,7 @@ if LooseVersion(sphinx.__version__) < LooseVersion('1.3'):
 # documentation.
 #html_theme_options = {}
 #import alabaster
-#html_theme_path = []
-
-html_theme = 'classic'
+html_theme_path = ['themes']
 
 html_sidebars = {'**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html']}
 
