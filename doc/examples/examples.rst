@@ -1,6 +1,11 @@
 Examples
 ========
 
+.. toctree::
+    :maxdepth: 1
+
+    basic.ipynb
+
 Example 1: Axial stressed beam
 ------------------------------
 
