@@ -14,4 +14,18 @@ jobs:
           conda install -y openturns numpy pytest
           python setup.py install
           pytest
-
+      - name: Upload
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: |
+          exit 0
+          git clone --depth 1 https://${{ secrets.GH_TOKEN }}@github.com/sofianehaddad/sofianehaddad.github.io.git /tmp/io
+          mkdir -p /tmp/io/sphinx/ottemplate/master
+          cp -r doc/_build/html/* /tmp/io/sphinx/ottemplate/master
+          cd /tmp/io
+          touch .nojekyll
+          git config user.email "support@gh.com"
+          git config user.name "GitHub Actions"
+          git add -A .
+          if test `git diff HEAD | wc -c` -eq 0; then exit 0; fi
+          git commit -a -m "GitHub Actions build ${GITHUB_REPOSITORY} ${GITHUB_RUN_ID}"
+          git push --quiet origin master > /dev/null 2>&1
