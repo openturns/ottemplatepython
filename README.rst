@@ -65,3 +65,5 @@ Here are some links to help on how to build a python module
 https://www.sphinx-doc.org/en/master/usage/quickstart.html
 
 https://python-packaging.readthedocs.io/en/latest/minimal.html
+
+https://github.com/efekhari27/otquickmodule
