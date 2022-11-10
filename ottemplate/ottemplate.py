@@ -4,7 +4,7 @@ import openturns as ot
 class MyClass(object):
     """
     Class test
-    Applying power on
+    Applying power function
 
     Parameters
     ----------
