@@ -14,13 +14,13 @@
 import sys, os
 from distutils.version import LooseVersion
 import sphinx
+import sphinx_gallery
 import subprocess
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('../'))
-sys.path.append(os.path.abspath('sphinxext'))
 
 # -- General configuration ------------------------------------------------
 
@@ -31,45 +31,66 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.coverage',
     'numpydoc',
-    'nbsphinx'
+    'sphinx_gallery.gen_gallery'
 ]
 
-nbsphinx_execute = 'never'
-# dont add .txt suffix to notebook
-html_sourcelink_suffix = ''
-tags.add('nbsphinx')
-extensions.append('IPython.sphinxext.ipython_console_highlighting')
+sphinx_gallery_conf = {
+    'examples_dirs': ['examples'],  # path to
+    # example scripts
+    'gallery_dirs': ['auto_example'],
+     'filename_pattern': '/plot_',
+    'run_stale_examples': True,
+    'show_signature': False,
+    # directory where function/class granular galleries are stored
+    'backreferences_dir'  : 'gen_modules/backreferences',
+
+    # Modules for which function/class level galleries are created.
+    'doc_module'          : ('openturns'),
+
+    # objects to exclude from implicit backreferences. The default option
+    # is an empty set, i.e. exclude nothing.
+    'exclude_implicit_doc': {},
+}
 
 if LooseVersion(sphinx.__version__) >= LooseVersion('1.8'):
     autodoc_default_options = {'members': None, 'inherited-members': None, 'exclude-members': 'thisown'}
 else:
     autodoc_default_flags =  ['members', 'inherited-members']
-intersphinx_mapping = {'python': ('http://openturns.github.io/openturns/1.18', 'openturns-objects.inv')}
-autosummary_generate = True
 
-numpydoc_show_class_members = True
-numpydoc_class_members_toctree = False
-
-# for equations
 try:
     import sphinx.ext.imgmath
     extensions.append('sphinx.ext.imgmath')
+    imgmath_latex_preamble = r'\usepackage{{{0}math_notations}}'.format(
+        os.path.dirname(__file__) + os.sep)
     imgmath_use_preview = True
     if subprocess.call('dvisvgm -V', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) == 0:
         imgmath_image_format = 'svg'
+    # embed image files inside html
+    imgmath_embed = True
 except ImportError:
     extensions.append('sphinx.ext.pngmath')
+    pngmath_latex_preamble = r'\usepackage{{{0}math_notations}}'.format(
+        os.path.dirname(__file__) + os.sep)
     # The next option is used for smart-alignment of math images on the text.
     # It only works when the preview-latex package is installed.
     # See http://sphinx-doc.org/latest/ext/math.html#confval-pngmath_use_preview
     pngmath_use_preview = True
+
+extensions.append('matplotlib.sphinxext.plot_directive')
+
+intersphinx_mapping = {'python': (
+    'http://openturns.github.io/openturns/1.18', 'openturns-objects.inv')}
+autosummary_generate = True
+
+numpydoc_show_class_members = True
+numpydoc_class_members_toctree = False
 
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
-source_suffix = '.rst'
+source_suffix = ['.rst']
 
 # The master toctree document.
 master_doc = 'index'
@@ -98,7 +119,7 @@ release = '0.1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build','themes', 'sphinxext', '.ipynb_checkpoints']
+exclude_patterns = []
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -129,8 +150,7 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'openturns'
-if LooseVersion(sphinx.__version__) < LooseVersion('1.3'):
-    html_theme = 'default'
+html_sourcelink_suffix = ''
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -193,23 +213,21 @@ latex_preamble = r'''
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{expdlist}
+\usepackage{math_notations}
+\usepackage{stackrel}
 \let\latexdescription=\description
 \def\description{\latexdescription{}{} \breaklabel}
 \DeclareMathOperator*{\argmin}{Argmin}
 '''
 
+
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-'papersize': 'a4paper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-'preamble': latex_preamble,
-
-# Latex figure (float) alignment
-#'figure_align': 'htbp',
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper',
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '10pt',
+    # Additional stuff for the LaTeX preamble.
+    'preamble': latex_preamble,
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
