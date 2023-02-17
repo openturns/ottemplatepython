@@ -1,9 +1,8 @@
 import ottemplate
-import numpy as np
 import openturns as ot
 import pytest
-import numpy.testing as npt
 import openturns.testing as ott
+
 
 @pytest.fixture(scope="session")
 def data():
@@ -19,4 +18,3 @@ def test_class(data):
 
     ott.assert_almost_equal(obj.power(1), value)
     ott.assert_almost_equal(obj.power(2), f(value))
-

@@ -13,7 +13,6 @@ import openturns as ot
 from openturns.viewer import View
 import numpy as np
 import ottemplate
-from matplotlib import pylab as plt
 
 # %%
 # | Using the module to compute power

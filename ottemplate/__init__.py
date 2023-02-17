@@ -8,12 +8,8 @@
 
 """
 
-import sys
-if sys.platform.startswith('win'):
-    # this ensures OT dll is loaded
-    import openturns
+# flake8: noqa
 
 from .ottemplate import MyClass
 
 __version__ = '0.1'
-

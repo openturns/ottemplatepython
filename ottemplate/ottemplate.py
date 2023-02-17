@@ -1,7 +1,7 @@
 import numpy as np
-import openturns as ot
 
-class MyClass(object):
+
+class MyClass:
     """
     Class test
     Applying power function
@@ -10,10 +10,11 @@ class MyClass(object):
     ----------
     value : array-like or float
         The considered value.
-    
+
     Notes
     -----
-    Objects of type :py:class:`openturns.Sample` or :py:class:`openturns.Point` are also accepted.
+    Objects of type :py:class:`openturns.Sample` or :py:class:`openturns.Point`
+    are also accepted.
     """
     def __init__(self, value):
         # set attribute
