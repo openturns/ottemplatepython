@@ -2,6 +2,7 @@
 Example : Using ottemplatepython module
 ---------------------------------------
 """
+
 # %%
 # This example aims to illustrate how to use the module.
 
