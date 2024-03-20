@@ -4,14 +4,14 @@ jobs:
   conda-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: conda-incubator/setup-miniconda@v2
         with:
           miniforge-version: latest
       - name: Build
         shell: bash -l {0}
         run: |
-          conda install -y openturns numpy pytest numpydoc sphinx sphinx-gallery sphinx_rtd_theme pandoc flake8 "matplotlib<3.7"
+          conda install -y openturns numpy pytest numpydoc sphinx sphinx-gallery sphinx_rtd_theme pandoc flake8 matplotlib
           flake8 --max-line-length=120
           python setup.py install
           pytest

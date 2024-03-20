@@ -33,19 +33,9 @@ extensions = [
 ]
 
 sphinx_gallery_conf = {
-    "examples_dirs": ["examples"],  # path to
-    # example scripts
-    "gallery_dirs": ["auto_example"],
-    "filename_pattern": "/plot_",
-    "run_stale_examples": True,
-    "show_signature": False,
-    # directory where function/class granular galleries are stored
-    "backreferences_dir": "gen_modules/backreferences",
-    # Modules for which function/class level galleries are created.
-    "doc_module": ("openturns"),
-    # objects to exclude from implicit backreferences. The default option
-    # is an empty set, i.e. exclude nothing.
-    "exclude_implicit_doc": {},
+    'examples_dirs': ['examples'],
+    'gallery_dirs': ['auto_examples'],
+    'show_signature': False,
 }
 
 autodoc_default_options = {
@@ -72,7 +62,7 @@ imgmath_embed = True
 extensions.append("matplotlib.sphinxext.plot_directive")
 
 intersphinx_mapping = {
-    "python": ("http://openturns.github.io/openturns/1.18", "openturns-objects.inv")
+    "python": ("http://openturns.github.io/openturns/1.22", "openturns-objects.inv")
 }
 autosummary_generate = True
 
@@ -91,7 +81,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"ottemplate"
-copyright = u"2005-2023 Airbus-EDF-IMACS-ONERA-Phimeca"
+copyright = u"2005-2024 Airbus-EDF-IMACS-ONERA-Phimeca"
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
