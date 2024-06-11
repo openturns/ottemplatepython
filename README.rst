@@ -31,13 +31,13 @@ The install procedure is performed as follows:
 
 .. code-block:: shell
 
-    $ python setup.py install
+    $ pip install .
 
-If you need to install the module in the user folder :
+If you need to install the module in the user folder:
 
 .. code-block:: shell
 
-    $ python setup.py install --user
+    $ pip install . --user
 
 To run the tests:
 
@@ -45,7 +45,7 @@ To run the tests:
 
     $ pytest
 
-Finally to build the documentation, you should invoke the `build_sphinx` option :
+Finally to build the documentation, you should invoke the `build_sphinx` option:
 
 .. code-block:: shell
 
