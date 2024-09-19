@@ -8,7 +8,7 @@ Usage
 -----
 ::
 
-    python setup.py install
+    pip install .
 
 """
 import re
