@@ -24,7 +24,7 @@ Get source:
 
 .. code-block:: shell
 
-    $ git clone https://www.github.com/sofianehaddad/ottemplatepython.git
+    $ git clone https://www.github.com/openturns/ottemplatepython.git
 
 
 The install procedure is performed as follows:
