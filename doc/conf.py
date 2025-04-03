@@ -81,7 +81,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"ottemplate"
-copyright = u"2005-2024 Airbus-EDF-IMACS-ONERA-Phimeca"
+copyright = u"2005-2025 Airbus-EDF-IMACS-ONERA-Phimeca"
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
