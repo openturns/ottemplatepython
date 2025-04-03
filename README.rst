@@ -45,17 +45,17 @@ To run the tests:
 
     $ pytest
 
-Finally to build the documentation, you should invoke the `build_sphinx` option:
+Finally to build the documentation, one of the following option could be used :
 
 .. code-block:: shell
 
-    $ python setup.py build_sphinx
-
-This builds the documentation in the `build` folder. Another option is to launch the `make` command:
-
-.. code-block:: shell
-
+    $ sphinx-build doc doc/_build
+    #$ python -m sphinx doc doc_build
     $ make html -C doc
+
+
+This generate the documentation in the `doc/_build` folder.
+
 
 Help pages
 ==========
