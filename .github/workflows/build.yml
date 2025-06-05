@@ -25,8 +25,8 @@ jobs:
         run: |
           exit 0
           git clone --depth 1 https://${{ secrets.GH_TOKEN }}@github.com/openturns/openturns.github.io.git /tmp/io
-          mkdir -p /tmp/io/sphinx/ottemplate/master
-          cp -r doc/_build/html/* /tmp/io/sphinx/ottemplate/master
+          mkdir -p /tmp/io/ottemplate/master
+          cp -r doc/_build/html/* /tmp/io/ottemplate/master
           cd /tmp/io
           touch .nojekyll
           git config user.email "support@gh.com"
