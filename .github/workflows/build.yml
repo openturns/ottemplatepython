@@ -1,16 +1,17 @@
 name: Build
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
 jobs:
   conda-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v3
         with:
           miniforge-version: latest
+          conda-remove-defaults: "true"
       - name: Build
         shell: bash -l {0}
         run: |
@@ -21,7 +22,7 @@ jobs:
           sudo apt install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
           make html -C doc
       - name: Upload
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           exit 0
           git clone --depth 1 https://${{ secrets.GH_TOKEN }}@github.com/openturns/openturns.github.io.git /tmp/io
